@@ -3,7 +3,7 @@ COPY . /src/loki
 WORKDIR /src/loki
 RUN make clean && make BUILD_IN_CONTAINER=false fluent-bit-plugin
 
-FROM eu.gcr.io/deity-cloud-prod/infra/fluent-bit:1.8.12
+FROM eu.gcr.io/deity-cloud-prod/infra/fluent-bit:2.0.6
 COPY --from=build /src/loki/clients/cmd/fluent-bit/out_grafana_loki.so /fluent-bit/bin
 COPY clients/cmd/fluent-bit/fluent-bit.conf /fluent-bit/etc/fluent-bit.conf
 EXPOSE 2020
